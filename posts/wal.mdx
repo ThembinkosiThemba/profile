@@ -1,0 +1,53 @@
+---
+title: "What is Write-Ahead Logging (WAL)"
+description: "WAL is a fundamental concept in database systems, ensuring data integrity and crash recovery. This post explains its key principles and implementations across various database systems."
+date: "February 4, 2025"
+---
+
+## What is Write-Ahead Logging (WAL)?
+
+Write-Ahead Logging (WAL) is a widely used technique in database management systems to ensure data integrity and durability. The primary principle of WAL is simple: before any changes are applied to the actual database, they must first be recorded in a log. This guarantees that even in the event of a system crash, the database can be recovered by replaying the log.
+
+### How WAL Works
+
+WAL operates by logging all database modifications before writing them to the database itself. The key functionalities of WAL include:
+
+- **Durability:** Ensures that all changes are logged before being applied, preventing data loss in case of a crash.
+- **Atomicity:** Provides a mechanism to roll back uncommitted transactions and redo committed ones.
+- **Crash Recovery:** If a failure occurs, the database can reconstruct its state by replaying the WAL.
+- **Checkpointing:** Periodically, the system writes all changes from the WAL to the database and clears the log to optimize performance.
+
+### WAL vs. Shadow Paging
+
+WAL enables updates to be performed in-place, reducing the need for additional data structures like indexes and block lists. An alternative approach, shadow paging, maintains separate copies of data pages before committing changes. While shadow paging ensures atomicity, WAL is often preferred due to its efficiency and widespread use in modern database systems.
+
+## WAL Implementations in Popular Databases
+
+### SQL Server
+
+- **Redo:** Committed transactions are recorded in the transaction log, allowing the system to replay them during recovery.
+- **Undo:** If a transaction is uncommitted at the time of failure, SQL Server rolls back the changes using the log.
+
+### Oracle
+
+- **Redo:** Changes are first recorded in redo logs before being applied to the database.
+- **Undo:** Oracle maintains undo segments, storing the previous state of data, allowing for rollback operations if necessary.
+
+### MySQL (InnoDB)
+
+- **Redo:** Changes are logged in a redo log before being written to data files, ensuring committed transactions can be redone after a crash.
+- **Undo:** InnoDB maintains undo logs to roll back uncommitted transactions, preserving database integrity.
+
+### PostgreSQL
+
+- **Redo:** Modifications are first written to a WAL file before updating the main database files.
+- **Undo:** PostgreSQL uses Multi-Version Concurrency Control (MVCC) to maintain multiple versions of data, allowing uncommitted changes to be rolled back.
+
+### SQLite
+
+- **Redo:** In WAL mode, changes are appended to a separate WAL file instead of modifying the main database file directly.
+- **Undo:** While SQLite does not support traditional undo operations post-commit, it uses a rollback journal to handle uncommitted transactions.
+
+## Conclusion
+
+Write-Ahead Logging (WAL) is a crucial component of modern database systems, ensuring consistency, durability, and efficient recovery mechanisms. While implementations vary across different database management systems, the core principle remains the same: changes must be logged before being applied to the database. Understanding WAL is essential for database administrators and developers who want to build reliable and resilient data management systems.
