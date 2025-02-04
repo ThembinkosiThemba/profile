@@ -1,3 +1,3 @@
-<samp>
-stack: next.js, tailwindcss, typescript, mdx, vercel, upstash redis
-</samp>
+# Profile
+
+This is my profile website
