@@ -63,7 +63,7 @@ const achievementItems: Item[] = [
     role: "Second Place Winner",
     period: "November",
     description:
-      "I was part of a team that won second place under the code for care hackathon organised by George Town University in collaboration with Royal Science and Technology Park. The competition was 48 hours and tackled challenges related to access to HIV-related healthcare for adolescent girls and young women is Eswatini.",
+      "I was part of a team that won second place under the code for care hackathon organised by George Town University in collaboration with Royal Science and Technology Park. The competition was 48 hours and it tackled challenges related to access to HIV-related healthcare for adolescent girls and young women is Eswatini.",
     href: "https://www.linkedin.com/posts/thembinkosi-mkhonta_health-eswatini-activity-7265602367620853760-PZdr?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYMNMUBcZHkR-LlbT2T62Ra6F4BJEhiBOo",
   },
   {
@@ -71,7 +71,7 @@ const achievementItems: Item[] = [
     role: "First Place Winner",
     period: "Nov 2023",
     description:
-      "Me and my partner won the hackathon with our solution which was in the FinTech space. The challenge was to design and implement any solution that utilised the MoMo API to make and financial transactions. We developed a fundraising platform for local citizens with the aim to help them raise funds from the public as well as other charitable organization",
+      "We (two) won the hackathon with the solution we built which was in the FinTech space. The challenge was to design and implement any solution that utilised the MoMo API to make financial transactions. We developed a fundraising platform for local citizens with the aim to help them raise funds from the public as well as other charitable organization",
     href: "https://www.linkedin.com/posts/thembinkosi-mkhonta_image-carousel-activity-7139322210732670978-7dhO?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYMNMUBcZHkR-LlbT2T62Ra6F4BJEhiBOo",
   },
 ]
