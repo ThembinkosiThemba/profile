@@ -83,8 +83,8 @@ export default function HomePage() {
       <div className="relative">
         <SiteNav />
         <div className="max-w-3xl">
-          <div id="archievements">
-            <SectionList title="archievements" items={achievementItems} />
+          <div id="reflections">
+            <SectionList title="reflections" items={achievementItems} />
           </div>
 
           <div id="work">
