@@ -11,7 +11,7 @@ const sections: Section[] = [
   { id: "reflections", label: "reflections" },
   { id: "work", label: "work" },
   { id: "projects", label: "projects" },
-  { id: "blog", label: "blogs" },
+  { id: "resources", label: "resources" },
   { id: "links", label: "links" },
 ]
 

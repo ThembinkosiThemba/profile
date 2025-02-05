@@ -1,0 +1,95 @@
+---
+title: "Rust's `?` Operator"
+description: "Learn how Rust's `?` operator simplifies error handling and propagation with practical examples."
+date: "February 5, 2025"
+---
+
+## Understanding Rust's `?` Operator for Error Propagation
+
+Rust's question mark (`?`) is a powerful operator for propagating errors, making error handling more concise and readable. Instead of manually handling each `Result` or `Option`, the `?` operator allows you to return errors quickly, reducing boilerplate code.
+
+### How Error Propagation Works
+
+Imagine we have three functions: `func1()`, `func2()`, and `func3()`, where `func1()` calls `func2()`, and `func2()` calls `func3()`. If `func3()` encounters an error, `func2()` can either handle it or propagate it to `func1()`. Propagating the error allows the caller function to handle it in a context-aware way.
+
+### Example: Reading Configuration from a File
+
+We will be reading some configuration settings stored in a file. This function will:
+
+1. Open the configuration file.
+2. Read its contents.
+3. Return the settings as a `String` or propagate any errors encountered.
+
+### Without the `?` Operator
+
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn read_config_from_file() -> Result<String, io::Error> {
+    let config_file_result = File::open("config.txt");
+
+    let mut config_file = match config_file_result {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut config = String::new();
+
+    match config_file.read_to_string(&mut config) {
+        Ok(_) => Ok(config),
+        Err(e) => Err(e),
+    }
+}
+```
+
+This function manually matches against `Result` values to handle errors, making it more verbose.
+
+### Using the `?` Operator for Simplicity
+
+We can simplify the function using the `?` operator:
+
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn read_config_from_file() -> Result<String, io::Error> {
+    let mut config_file = File::open("config.txt")?;
+    let mut config = String::new();
+    config_file.read_to_string(&mut config)?;
+    Ok(config)
+}
+```
+
+### Even More Concise with Chaining
+
+The `?` operator allows for even more compact code:
+
+```rust
+use std::fs;
+use std::io;
+
+fn read_config_from_file() -> Result<String, io::Error> {
+    fs::read_to_string("config.txt")
+}
+```
+
+## Using `?` with `Option<T>`
+
+Besides `Result<T, E>`, the `?` operator also works with `Option<T>`. If an `Option` contains `Some(T)`, it extracts the value; otherwise, it returns `None`.
+
+```rust
+fn get_first_word(text: &str) -> Option<&str> {
+    text.split_whitespace().next()?
+}
+```
+
+If `text` is empty, the function returns `None`; otherwise, it returns the first word.
+
+## Key Takeaways
+
+- The `?` operator simplifies error handling by propagating errors automatically.
+- It works with both `Result<T, E>` and `Option<T>`.
+- It enables cleaner, more readable code by reducing boilerplate error handling.
+
+By using the `?` operator effectively, you can write more idiomatic and maintainable Rust code.

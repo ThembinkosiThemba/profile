@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
       title: post.metadata.title,
       description: post.metadata.description,
       card: "summary_large_image",
-      creator: "@nexxeln",
+      creator: "@bane",
       images: [
         `https://www.thembinkosi.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
