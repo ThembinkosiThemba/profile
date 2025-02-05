@@ -83,7 +83,7 @@ export default function HomePage() {
       <div className="relative">
         <SiteNav />
         <div className="max-w-3xl">
-          <div id="reflections">``
+          <div id="reflections">
             <SectionList title="reflections" items={achievementItems} />
           </div>
 
