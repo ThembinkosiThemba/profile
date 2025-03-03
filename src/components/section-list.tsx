@@ -1,64 +1,45 @@
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import type { ReactNode } from "react"
 
-export type Item = {
-  title: string
-  href: string
-  role: string
-  period?: string
-  description: string
-}
-
-type SectionListProps = {
-  title: string
-  items: Item[]
+interface SectionContainerProps {
+  id: string
+  title?: string
+  children: ReactNode
+  className?: string
   viewAllHref?: string
   viewAllText?: string
 }
 
-export function SectionList({
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+
+export function SectionContainer({
+  id,
   title,
-  items,
+  children,
+  className = "",
   viewAllHref,
   viewAllText,
-}: SectionListProps) {
-  
-  if (title === "projects") {
-    items = items.slice(0, 2)
-  }
-
+}: SectionContainerProps) {
   return (
-    <section className="mb-16 animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-accent">
-        <span className="text-accent mr-2">*</span> {title}
-      </h2>
-      <div className="space-y-8">
-        {items.map((item, index) => (
-          <div key={item.title} className="group">
-            <Link href={item.href} target="_blank">
-              <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
-                <span className="flex flex-row">
-                  {item.title}{" "}
-                  <ArrowUpRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </span>
-              </h3>
-              <p className="text-sm text-gray-400 mb-2">
-                {item.role} {item.period && `(${item.period})`}
-              </p>
-              <p className="text-gray-300">{item.description}</p>
-            </Link>
-          </div>
-        ))}
-      </div>
+    <section id={id} className={`scroll-mt-16 ${className}`}>
+      {title && (
+        <h2 className="mb-6 text-xl font-medium text-foreground/90 md:text-2xl">
+          <span className="text-primary mr-2">*</span> {title}
+        </h2>
+      )}
+
+      {children}
+
       {viewAllHref && (
         <Link
           href={viewAllHref}
-          className="inline-flex items-center gap-1 mt-6 text-accent hover:underline group"
+          className="mt-8 inline-flex items-center gap-1 text-sm text-primary hover:underline group"
         >
           {viewAllText}{" "}
-          <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       )}
     </section>
   )
 }
+

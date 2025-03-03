@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 type Section = {
   id: string
@@ -8,7 +9,7 @@ type Section = {
 }
 
 const sections: Section[] = [
-  { id: "whats-new", label: "whats-new" },
+  { id: "featured", label: "what's new" },
   { id: "reflections", label: "reflections" },
   { id: "work", label: "work" },
   { id: "projects", label: "projects" },
@@ -17,7 +18,7 @@ const sections: Section[] = [
 ]
 
 export function SiteNav() {
-  const [activeSection, setActiveSection] = useState<string>("achievements")
+  const [activeSection, setActiveSection] = useState<string>("featured")
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,7 +30,8 @@ export function SiteNav() {
         })
       },
       {
-        rootMargin: "-50% 0px -50% 0px", // Triggers when section is in middle of viewport
+        rootMargin: "-20% 0px -70% 0px", // Adjusted for better triggering
+        threshold: 0.1,
       }
     )
 
@@ -42,31 +44,39 @@ export function SiteNav() {
   }, [])
 
   return (
-    <nav className="fixed right-8 top-1/2 -translate-y-1/2 hidden lg:block">
-      <div className="space-y-2">
-        {sections.map((section, index) => (
-          <div key={section.id} className="flex items-center group">
-            <a
-              href={`#${section.id}`}
-              className={`relative text-sm transition-colors duration-200 group-hover:text-accent ${
-                activeSection === section.id ? "text-accent" : "text-gray-500"
-              }`}
-            >
-              {section.label}
-            </a>
-            <div className="ml-2 w-8">
-              <div
-                className={`h-[2px] bg-gray-800 transform origin-left transition-all duration-200 ${
-                  activeSection === section.id
-                    ? "bg-accent w-full"
-                    : "w-4 group-hover:bg-accent"
-                }`}
-              />
-            </div>
-          </div>
-        ))}
-        <div className="absolute top-0 bottom-0 right-[34px] w-[2px] bg-gray-800" />
-      </div>
-    </nav>
+    <div className="sticky top-24">
+      <nav className="rounded-lg border border-border/40 bg-card/30 p-4">
+        <p className="mb-4 text-xs font-medium uppercase text-muted-foreground">
+          On this page
+        </p>
+        <ul className="space-y-3">
+          {sections.map((section) => {
+            const isActive = activeSection === section.id
+
+            return (
+              <li key={section.id} className="relative">
+                <a
+                  href={`#${section.id}`}
+                  className={`block text-sm transition-colors duration-200 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {section.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute -left-4 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-primary"
+                      transition={{ type: "spring", duration: 0.5 }}
+                    />
+                  )}
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+    </div>
   )
 }

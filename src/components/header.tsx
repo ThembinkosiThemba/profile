@@ -23,7 +23,7 @@ export function Header() {
             className="flex flex-row"
           >
             creator @
-            <span className="flex flex-row hover:text-accent transition-colors duration-200">
+            <span className="flex flex-row text-orange-600 hover:text-accent transition-colors duration-200">
               tempdb-labs{" "}
               <ArrowUpRight className="w-4 h-4 ransition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </span>

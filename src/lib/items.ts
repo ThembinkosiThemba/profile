@@ -1,7 +1,4 @@
-import { Item } from "@/components/section-list"
-import { WhatsNewItem } from "@/components/whats-new"
-
-export const achievementItems: Item[] = [
+export const achievementItems = [
   {
     title: "The SATNAC Innovator Award & the Best Telkom Award For 2024",
     role: "Winners",
@@ -28,7 +25,15 @@ export const achievementItems: Item[] = [
   },
 ]
 
-export const workItems: Item[] = [
+export const workItems = [
+  {
+    title: "armur ai",
+    role: "software engineer (ml/ai)",
+    period: "aug 2024 - present",
+    description:
+      "Contributed to researching and optimization of large language models for security applications, including fine-tuning, evaluation, and building data pipelines to enhance model performance and support real-world use cases. Worked on implementing AI agents to reduce model errors (hallucinations) and designed collaborative workflows, improving the accuracy and reliability of security-related reporting.",
+    href: "https://armur.ai",
+  },
   {
     title: "tempdb-labs",
     role: "creator",
@@ -56,7 +61,15 @@ export const workItems: Item[] = [
   },
 ]
 
-export const whatsNewItems: WhatsNewItem[] = [
+export const whatsNewItems: any[] = [
+  {
+    title: "Introducing Nexus AI for students",
+    href: "https://nexus-one-kohl.vercel.app",
+    date: "February 2025",
+    type: "project",
+    description:
+      "This is a platform that applies (RAG) to simplify your complex course material and learning strategies, helping you understand deeply and prepare effectively for exams",
+  },
   {
     title: "Introducing synaptic-web on Github",
     href: "https://github.com/ThembinkosiThemba/synaptic-web",
