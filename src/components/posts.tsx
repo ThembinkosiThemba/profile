@@ -17,7 +17,7 @@ export function Posts({ posts }: PostsProps) {
   const selectedItemRef = useRef<HTMLDivElement>(null)
 
   const filteredPosts = posts.filter((item) =>
-    item.metadata.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    item.metadata.title.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   useEffect(() => {
@@ -59,8 +59,8 @@ export function Posts({ posts }: PostsProps) {
               ? prev + 1
               : prev
             : prev > 0
-              ? prev - 1
-              : prev
+            ? prev - 1
+            : prev
 
           scrollSelectedIntoView()
           return newIndex

@@ -18,7 +18,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4" />
           <Link
-            href={"https://beta.tempdb.xyz"}
+            href={"https://tempdb.xyz"}
             target="_blank"
             className="flex flex-row"
           >
@@ -31,11 +31,11 @@ export function Header() {
         </div>
       </div>
       <p className="leading-relaxed animate-fade-in-up">
-        i&apos;m a software engineer and i have a deep interest in understanding
-        the core technologies and software that exists today, and how they came
-        to be. i enjoy researching and learning about data intensive systems as
-        well as cloud infrastructure and how to offer them in the best way
-        possible to the public.
+        i&apos;m a software engineer and i have a deep interest in how we
+        represent data in storage, and how we can build and optimise current
+        systems for efficient data use and processing. i enjoy researching and
+        learning about data intensive systems as well as cloud infrastructure
+        and how to offer them in the best way possible to the public.
       </p>
     </header>
   )

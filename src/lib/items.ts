@@ -63,12 +63,12 @@ export const workItems = [
 
 export const whatsNewItems: any[] = [
   {
-    title: "Introducing Nexus AI for students",
-    href: "https://nexus-one-kohl.vercel.app",
-    date: "February 2025",
+    title: "TempDB Labs now live",
+    href: "https://tempdb.xyz",
+    date: "March 2025",
     type: "project",
     description:
-      "This is a platform that applies (RAG) to simplify your complex course material and learning strategies, helping you understand deeply and prepare effectively for exams",
+      "TempDB Labs is now live :). Check out the link for more, create a database and start storing data.",
   },
   {
     title: "Introducing synaptic-web on Github",
@@ -108,6 +108,18 @@ export const projects = [
     ],
     technologies: ["golang"],
     href: "https://github.com/ThembinkosiThemba/zen",
+  },
+  {
+    title: "flow",
+    description:
+      "A glorified todo application which just has a way of creating tasks, and a pomodoro timer.",
+    role: "creator and maintainer",
+    period: "active development",
+    achievements: [
+      "Remove the clutter from existing solutions like Jira and have a simple way for creating an doing tasks",
+    ],
+    technologies: ["typescript"],
+    href: "https://floow.vercel.app/",
   },
   {
     title: "Genesis",
